@@ -1,0 +1,28 @@
+/* Container principal da página de opções */
+.options-container {
+    /* Define o tamanho total do container */
+    width: 100%;
+    height: 100%;
+    
+    /* Adiciona padding e garante que o padding não afeta o tamanho */
+    padding: 1rem;
+    box-sizing: border-box;
+    
+    /* Define o fundo branco */
+    background-color: #fff;
+  }
+  
+  /* Estilo para o título principal */
+  .options-container h1 {
+    /* Define o espaçamento vertical */
+    margin: 0 0 1rem 0;
+    
+    /* Adiciona padding vertical */
+    padding: 0.5rem 0;
+    
+    /* Adiciona uma borda inferior sutil */
+    border-bottom: 1px solid #eee;
+    
+    /* Define a cor do texto */
+    color: #2c3e50;
+  }

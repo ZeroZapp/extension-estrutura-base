@@ -1,0 +1,132 @@
+/* src/pages/panel/index.css */
+.panel-container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .panel-card {
+    margin: 0;
+  }
+  
+  .stats-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-card {
+    background: var(--nextui-colors-background);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .stat-card h3 {
+    color: var(--nextui-colors-text);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .stat-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--nextui-colors-foreground);
+    margin: 0;
+  }
+  
+  .stats-details {
+    background: var(--nextui-colors-background);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+  }
+  
+  .stats-details h2 {
+    color: var(--nextui-colors-text);
+    margin-bottom: 1rem;
+  }
+  
+  .peak-hours {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .peak-hours li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--nextui-colors-border);
+    color: var(--nextui-colors-text);
+  }
+  
+  .peak-hours li:last-child {
+    border-bottom: none;
+  }
+  
+  .panel-actions {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  /* Estilo para o botão de exportação */
+  .panel-actions button {
+    min-width: 200px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Estilo para o modal */
+  .modal-content {
+    max-width: 500px;
+  }
+  
+  .modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--nextui-colors-border);
+  }
+  
+  .modal-body {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--nextui-colors-border);
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Estilo para o loading */
+  .button[isLoading] {
+    cursor: not-allowed;
+  }
+  
+  .button[isLoading]::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 0.5rem;
+    border: 2px solid var(--nextui-colors-foreground);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
