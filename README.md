@@ -1,4 +1,5 @@
 🧩 ZeroZapp — Integração com WhatsApp Web
+
 Este módulo é responsável pela integração da extensão ZeroZapp com o WhatsApp Web, incluindo injeção de scripts, manipulação de mensagens, atalhos de teclado, interface visual e controle de chats.
 
 📁 Estrutura de Diretórios
