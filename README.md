@@ -1,100 +1,90 @@
+🧩 ZeroZapp — Integração com WhatsApp Web
+Este módulo é responsável pela integração da extensão ZeroZapp com o WhatsApp Web, incluindo injeção de scripts, manipulação de mensagens, atalhos de teclado, interface visual e controle de chats.
 
-#  Extensão Estrutura Base – Projeto ZeroZap
+📁 Estrutura de Diretórios
+bash
+Copiar
+Editar
+src/pages/content/client/
+├── features/
+│   ├── chatActions.js             # Ações sobre chats (arquivar, snooze, etc)
+│   ├── keyboardShortcuts.js       # Atalhos de teclado personalizados
+│   └── messageUtils.js            # Utilitários de mensagem e chat
+├── utils/
+│   ├── domUtils.js                # Funções auxiliares para manipulação do DOM
+│   └── storeUtils.js              # Acesso e verificação do WhatsApp Store
+└── ui/
+    ├── menuManager.js             # Gerencia o menu da extensão
+    ├── summaryManager.js          # Exibe resumos de conversas
+    └── chatListActions.js         # Ações relacionadas à lista de chats
+🔄 Fluxo de Inicialização (inicializer.js)
+Aguarda o carregamento do WhatsApp Web
 
-Extensão para Google Chrome desenvolvida com o objetivo de facilitar o **gerenciamento e visualização de conversas do WhatsApp Web**, usando uma arquitetura moderna e altamente reutilizável.
+Injeta os estilos visuais necessários
 
-Este projeto também serve como **estrutura base** para outras extensões, com foco em performance, escalabilidade e manutenibilidade.
+Inicializa os módulos utilitários
 
----
+Configura listeners de eventos e atalhos de teclado
 
-## 📄 Funcionalidades
+Injeta e configura a interface da extensão
 
-- 🔍 **Busca em tempo real** de conversas
-- 📂 **Filtros por status, data e tipo**
-- 💾 **Armazenamento local persistente** com PouchDB
-- 🌙 **Suporte a tema escuro adaptativo**
-- 🔄 **Recarregamento e sincronização automática**
-- 📡 **Integração com Socket.io para comunicação em tempo real**
-- ⚛️ **Componentização com React e NextUI**
-- 🧩 **Arquitetura organizada e escalável**
+🧠 Módulos e Responsabilidades
+1. inicializer.js – Sistema de Inicialização
+Aguarda o window.Store estar pronto
 
----
+Injeta estilos (injected.css)
 
-## 🛠️ Tecnologias Utilizadas
+Inicializa componentes e observadores
 
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [NextUI](https://nextui.org/)
-- [PouchDB](https://pouchdb.com/)
-- [Socket.io Client](https://socket.io/)
-- [Moment.js](https://momentjs.com/)
-- [Lucide React](https://lucide.dev/)
-- [ESLint](https://eslint.org/)
+2. chatActions.js – Sistema de Comunicação com o WhatsApp
+Arquivamento e snooze de chats
 
----
+Comunicação direta com window.Store
 
-## 📦 Instalação
+Manipulação de mensagens e chats
 
-> Pré-requisitos: Node.js, npm ou yarn
+3. messageUtils.js – Sistema de Mensagens
+Extração e formatação de mensagens
 
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/extensao-estrutura-base.git
-```
+Busca de chats ativos
 
-2. Instale as dependências:
-```bash
-npm install
-# ou
-yarn
-```
+Modelos reutilizáveis de mensagens
 
-3. Rode o projeto em modo desenvolvimento:
-```bash
-npm run dev
-```
+4. keyboardShortcuts.js – Sistema de Atalhos
+Atalhos como Ctrl + E para arquivar chats
 
-4. Para gerar o build da extensão:
-```bash
-npm run build
-```
+Prevenção de conflitos com atalhos do navegador
 
-5. Vá até o `chrome://extensions/` no navegador, ative o modo de desenvolvedor e carregue a pasta `dist/` como extensão não empacotada.
+Registro e remoção de listeners
 
----
+5. ui/ – Sistema de UI Injetada
+Gerenciamento de menus, resumos e botões de ação
 
-## 📁 Documentação
+Manipulação visual dos elementos da interface do WhatsApp
 
-A documentação técnica completa está disponível em:
+6. injected.css – Sistema de Estilos
+Estilização dos elementos da extensão
 
-📄 https://carmonaventures.notion.site/Documeta-o-Completo-para-Criar-uma-Estrutura-B-sica-de-Extens-o-do-Chrome-com-React-1df15041ac0881088a47e0bde3dd0fe6?pvs=4
+Integração visual fluida com o WhatsApp Web
 
----
+⚠️ Pontos de Atenção
+Sempre verificar se window.Store está carregado
 
-## 🤝 Contribuindo
+Remover listeners ao recarregar ou reinjetar o script
 
-Contribuições são bem-vindas! Para contribuir:
+Usar try/catch e console.debug para rastreamento de erros
 
-1. Faça um fork deste repositório.
-2. Crie uma branch com sua feature: `git checkout -b minha-feature`
-3. Commit suas mudanças: `git commit -m 'Adiciona nova feature'`
-4. Push para a branch: `git push origin minha-feature`
-5. Abra um Pull Request.
+Seguir a ordem de carregamento correta entre os módulos
 
----
+🐞 Depuração
+Use logs no console para rastrear eventos e problemas:
 
-## 📜 Licença
-
-Este projeto está licenciado sob a **MIT License**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-## 👨‍💻 Autor
-
-Desenvolvido por [ZeroZap](https://github.com/ZeroZapp)
-```
-
----
-
-Você quer que eu gere esse `README.md` como arquivo para download também?
+javascript
+Copiar
+Editar
+console.debug('[INIT] Inicialização iniciada...');
+console.debug('[STORE] WhatsApp Store disponível');
+console.debug('[UI] Menu injetado com sucesso');
+console.error('[ERROR] Falha ao injetar elemento:', error);
+📃 Licença
+Este projeto segue os termos da MIT License.
