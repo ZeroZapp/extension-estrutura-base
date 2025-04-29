@@ -1,10 +1,17 @@
 // src/pages/content/injected/index.js
-import 'webextension-polyfill';
-import './toggleTheme';
+/**
+ * DO NOT USE import someModule from '...';
+ *
+ * @issue-url https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/160
+ *
+ * Chrome extensions don't support modules in content scripts.
+ * If you want to use other modules in content scripts, you need to import them via these files.
+ *
+ */
 
 console.log('[injected/index.js] Script execution started.');
 
-// Injeta inicializer.js primeiro
+// Injeta inicializer.js PRIMEIRO
 if (!document.getElementById('clientjs')) {
   console.log('[injected/index.js - Log] Attempting to inject clientjs...');
   try {
@@ -61,7 +68,6 @@ function loadModules() {
   }
 }
 
-// Event listener para mensagens
 window.addEventListener('message', async function (evt) {
   console.log('[injected/index.js] window.addEventListener - Message received:', evt.data);
   
@@ -82,7 +88,6 @@ window.addEventListener('message', async function (evt) {
 
 // Listener chrome.runtime.onMessage
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  console.log('[injected/index.js] chrome.runtime.onMessage - Message received:', request);
   console.log('[injected/index.js] chrome.runtime.onMessage - Message received:', request);
   console.log('on message received in content', request, sender, sendResponse);
 });
@@ -151,48 +156,32 @@ function captureChatStatus() {
   function processChat(chatElement) {
     const chatInfo = {
       id: chatElement.getAttribute('data-id'),
-      name: chatElement.querySelector('.chat-title')?.textContent,
-      lastMessage: chatElement.querySelector('.message-preview')?.textContent,
-      unreadCount: chatElement.querySelector('.unread-count')?.textContent
+      active: chatElement.classList.contains('selected'),
+      unread: chatElement.classList.contains('unread'),
+      timestamp: chatElement.getAttribute('data-timestamp')
     };
 
     sendEvent('CHAT_STATUS', chatInfo);
   }
 
-  function checkChats() {
-    const chats = document.querySelectorAll(CHAT_SELECTOR);
-    chats.forEach(processChat);
-  }
-
-  const chatList = document.querySelector('.chat-list');
-  if (chatList) {
+  const chatContainer = document.querySelector('.chat-list');
+  if (chatContainer) {
     const observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
         if (mutation.addedNodes.length > 0) {
-          checkChats();
+          chatContainer.querySelectorAll(CHAT_SELECTOR).forEach(processChat);
         }
       });
     });
 
-    observer.observe(chatList, {
+    observer.observe(chatContainer, {
       childList: true,
       subtree: true
     });
   }
 }
 
-// Inicialização do script injetado
-function init() {
-  if (!isWhatsAppWeb()) {
-    console.log('Not on WhatsApp Web');
-    return;
-  }
-
-  console.log('Injected script initialized');
-
-  captureMessages();
-  captureChatStatus();
+// Função para tratar eventos de resumo
+function handleSummarize() {
+  // Implementar a lógica de resumo aqui
 }
-
-// Executar
-init();
