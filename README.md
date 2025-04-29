@@ -1,6 +1,8 @@
 🧩 ZeroZapp — Integração com WhatsApp Web
-
 Este módulo é responsável pela integração da extensão ZeroZapp com o WhatsApp Web, incluindo injeção de scripts, manipulação de mensagens, atalhos de teclado, interface visual e controle de chats.
+
+📄 Documentação técnica completa:
+👉 https://www.notion.so/carmonaventures/Documenta-o-T-cnica-Integra-o-com-WhatsApp-ZeroZapp-1e415041ac088004b473f3da6bbe20d8?pvs=4
 
 📁 Estrutura de Diretórios
 bash
@@ -89,3 +91,4 @@ console.debug('[UI] Menu injetado com sucesso');
 console.error('[ERROR] Falha ao injetar elemento:', error);
 📃 Licença
 Este projeto segue os termos da MIT License.
+
