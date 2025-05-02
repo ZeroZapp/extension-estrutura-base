@@ -36,10 +36,10 @@ const Inbox = {
   }
 };
 
-const InboxStorage = createStorage('inbox_storage', Inbox, {
+const storage = createStorage('inbox_storage', Inbox, {
   storageType: StorageType.Local,
   liveUpdate: true,
   sessionAccessForContentScripts: true
 });
 
-export default InboxStorage;
+export default storage;

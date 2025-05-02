@@ -13,6 +13,7 @@
   "dependencies": {
     "@nextui-org/react": "^2.6.11",
     "lucide-react": "^0.503.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.48",
     "pouchdb": "^9.0.0",
     "pouchdb-find": "^9.0.0",

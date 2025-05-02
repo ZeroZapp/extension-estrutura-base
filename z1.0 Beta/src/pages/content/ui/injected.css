@@ -1,0 +1,40 @@
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+a {
+  color: var(--link) !important;
+}
+
+button {
+  all: unset;
+  display: inline-block;
+  text-decoration: none;
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  text-rendering: optimizeLegibility;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 2px solid blue;
+}
+
+.zerozapp-menu-container-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 0;
+  box-sizing: border-box;
+  margin: 0;
+}
