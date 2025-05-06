@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NextUIProvider, Popover, PopoverTrigger, PopoverContent, Button } from '@nextui-org/react';
-import Calendar from '@pages/content/ui/calendar';
-
+import Calendar from '@pages/content/ui/calendar.jsx';
 import { CalendarHeart, NotebookText, Zap } from 'lucide-react'; // Import Zap icon
 
 // Remover interface ActionButtonProps e voltar à definição original
@@ -11,7 +10,7 @@ import { CalendarHeart, NotebookText, Zap } from 'lucide-react'; // Import Zap i
 // }
 
 // Remover a prop onSummarizeRequest, pois a lógica foi movida para injected/index.ts
-export default function ActionButton({ onSelectDatetime }: { onSelectDatetime: (datetime: string) => void; }) {
+export default function ActionButton({ onSelectDatetime }) {
   const [isOpenPopover, setIsOpenPopover] = useState(false);
   const [loading] = useState(false);
 

@@ -2,13 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardHeader, Button } from '@nextui-org/react';
 import { X } from 'lucide-react';
 
-interface SummaryDisplayProps {
-  summary: string;
-  chatId: string; // Para referência futura, se necessário
-  onClose: () => void;
-}
-
-const SummaryDisplay: React.FC<SummaryDisplayProps> = ({ summary, chatId, onClose }) => {
+const SummaryDisplay = ({ summary, chatId, onClose }) => {
   return (
     // Posicionamento inicial fixo no canto superior direito. Pode ser ajustado.
     <div style={{

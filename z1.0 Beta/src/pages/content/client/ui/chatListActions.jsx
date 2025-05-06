@@ -1,11 +1,12 @@
-// src/pages/content/client/ui/chatListActions.js
+// src/pages/content/client/ui/chatListActions.jsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import ActionButton from '@pages/content/ui/button';
-import { Model } from '@pages/content/types/index';
+import ActionButton from '@pages/content/ui/button.jsx';
 import { findReactAsync } from '../utils/domUtils';
 import { onDelayedAction } from '../features/chatActions';
 import injectedStyle from '@pages/content/ui/injected.css?inline';
+
+/** @typedef {import('@pages/content/types').Model} Model */
 
 const BUTTON_CONTAINER_CLASS = 'zerozapp-action-buttons-container';
 const CHAT_LIST_ITEM_SELECTOR = '#pane-side [role="listitem"]';

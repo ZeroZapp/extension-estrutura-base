@@ -1,6 +1,8 @@
 // src/pages/content/client/utils/storeUtils.js
 import { findReactAsync } from './domUtils';
 
+/** @typedef {import('@pages/content/types').Model} Model */
+
 /**
  * Waits for window.Store and specified modules to be available.
  * @param {string[]} [requiredModules=['Chat', 'Cmd', 'WidFactory']] The modules to wait for.
@@ -102,7 +104,7 @@ async function waitForStoreAndUnarchive(chatId, retries = 10, delay = 500) {
 
 /**
  * Attempts to find the Model object for the currently active/selected chat in the WhatsApp UI.
- * @returns {Promise<any | null>} A promise that resolves with the chat model or null if not found.
+ * @returns {Promise<Model | null>} A promise that resolves with the chat model or null if not found.
  */
 async function getActiveChatModel() {
   console.log('[getActiveChatModel] Attempting to get active chat model...');
@@ -140,3 +142,5 @@ async function getActiveChatModel() {
   console.warn('[getActiveChatModel] Could not find active chat model via list item or header.');
   return null;
 }
+
+export { getActiveChatModel, waitForStore, waitForStoreAndUnarchive };

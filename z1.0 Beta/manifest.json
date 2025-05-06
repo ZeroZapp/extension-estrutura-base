@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "default_locale": "pt",
+  "default_locale": "en",
   "name": "__MSG_extensionName__",
   "version": "1.0.0",
   "description": "__MSG_extensionDescription__",
@@ -11,13 +11,9 @@
     "tabs",
     "activeTab",
     "scripting",
-    "webNavigation",
-    "cookies"
+    "devtools"
   ],
-  "host_permissions": [
-    "https://web.whatsapp.com/*",
-    "https://*.dash.z0z.app/*"
-  ],
+  "devtools_page": "src/pages/devtools/index.html",
   "side_panel": {
     "default_path": "src/pages/sidepanel/index.html"
   },
@@ -27,15 +23,10 @@
     "type": "module"
   },
   "action": {
-    "default_popup": "src/pages/popup/index.html",
-    "default_icon": {
-      "34": "public/icons/icon-34.png",
-      "128": "public/icons/icon-128.png"
-    }
+    "default_icon": "icon-34.png"
   },
   "icons": {
-    "34": "public/icons/icon-34.png",
-    "128": "public/icons/icon-128.png"
+    "128": "icon-128.png"
   },
   "content_scripts": [
     {
@@ -43,8 +34,8 @@
         "*://web.whatsapp.com/*",
         "*://*.dash.z0z.app/*"
       ],
-      "js": ["src/pages/contentInjected/index.js"],
-      "css": ["assets/css/contentStyle.chunk.css"]
+      "js": ["dist/src/pages/content/index.js"],
+      "css": ["assets/css/contentStyle*.chunk.css"]
     },
     {
       "matches": [
@@ -57,15 +48,16 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "src/pages/content/index.js",
-        "src/pages/moduleraid/index.js",
-        "assets/css/*.css",
-        "public/icons/*"
+        "src/pages/content/client/inicializer.js",
+        "src/pages/content/libs/moduleraid.js",
+        "assets/js/*.js",
+        "assets/css/*.css"
       ],
-      "matches": [
-        "*://web.whatsapp.com/*",
-        "*://*.dash.z0z.app/*"
-      ]
+      "matches": ["<all_urls>"]
     }
+  ],
+  "host_permissions": [
+    "*://web.whatsapp.com/*",
+    "*://*.dash.z0z.app/*"
   ]
 }

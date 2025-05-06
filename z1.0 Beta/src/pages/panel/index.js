@@ -1,16 +1,17 @@
 // src/pages/panel/index.js
 import React from 'react';
-import '@pages/panel/index.css';
 import { createRoot } from 'react-dom/client';
-import Panel from './Panel';
+import '@pages/panel/index.css';
+import Panel from './panel.jsx';
 
 function init() {
-  const appContainer = document.querySelector('#app-container');
+  const appContainer = document.getElementById('app-container');
   if (!appContainer) {
     throw new Error('Cannot find #app-container');
   }
   const root = createRoot(appContainer);
-  root.render(<Panel />);
+  const element = React.createElement(Panel, null);
+  root.render(element);
 }
 
 init();

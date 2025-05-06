@@ -1,7 +1,8 @@
 import('@pages/content/client/inicializer');
-import { Model } from '@pages/content/types/index';
 
 console.log('[client/index.js] Script execution started.');
+
+/** @typedef {import('../types').Model} Model */
 
 window.addEventListener('message', async evt => {
   console.log('[client/index.js] window.addEventListener - Message received:', evt.data);

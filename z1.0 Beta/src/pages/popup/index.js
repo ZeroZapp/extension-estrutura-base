@@ -1,31 +1,18 @@
-// Importando as dependências necessárias
+// Importações necessárias
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import '@pages/popup/index.css';
-import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-import Popup from './Popup';
+import Popup from './Popup.jsx';
 
-// Configurando o reload automático para desenvolvimento
-refreshOnUpdate('pages/popup');
+// Encontra o container da aplicação
+const appContainer = document.getElementById('app-container');
 
-/**
- * Função principal que inicializa o popup
- * Esta função é responsável por montar o componente React
- * dentro do contêiner da página de popup da extensão
- */
-function init() {
-  // Buscando o contêiner principal da aplicação
-  const appContainer = document.querySelector('#app-container');
-  
-  // Verificando se o contêiner existe
-  if (!appContainer) {
-    throw new Error('Cannot find #app-container');
-  }
-  
-  // Criando a raiz do React e renderizando o componente Popup
-  const root = createRoot(appContainer);
-  root.render(<Popup />);
+// Verifica se o container existe
+if (!appContainer) {
+  throw new Error('Cannot find #app-container');
 }
 
-// Inicializando a aplicação
-init();
+// Cria a raiz do React e renderiza o componente Popup
+const root = createRoot(appContainer);
+const element = React.createElement(Popup, null);
+root.render(element);

@@ -1,6 +1,7 @@
 import moment from 'moment-timezone';
-import { Model } from '@pages/content/types/index';
 import { getActiveChatModel } from '../utils/storeUtils'; // Import necessary utility
+
+/** @typedef {import('@pages/content/types').Model} Model */
 
 // --- Snooze Action ---
 
@@ -8,8 +9,8 @@ import { getActiveChatModel } from '../utils/storeUtils'; // Import necessary ut
  * Handles the action to "snooze" a chat.
  * This involves archiving the chat immediately and sending a message
  * to the background script/content script bridge to schedule its unarchiving.
- * @param datetime The ISO datetime string when the chat should reappear (UTC).
- * @param chatModel The model object of the chat to snooze.
+ * @param {string} datetime The ISO datetime string when the chat should reappear (UTC).
+ * @param {Model} chatModel The model object of the chat to snooze.
  */
 export const onDelayedAction = async (datetime, chatModel) => {
   // Update global selection state (if still needed, otherwise remove)
@@ -137,7 +138,7 @@ export function requestCancelBulkArchive() {
 
 /**
  * Handles the bulk archiving of chats based on the selected menu option.
- * @param key The key corresponding to the menu option ('archive-groups', 'archive-chats', 'archive-all').
+ * @param {string} key The key corresponding to the menu option ('archive-groups', 'archive-chats', 'archive-all').
  */
 export async function handleBulkArchive(key) {
     console.log('[chatActions - Bulk] Handling bulk archive request for key:', key);

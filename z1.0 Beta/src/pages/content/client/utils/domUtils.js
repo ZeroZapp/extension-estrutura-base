@@ -1,24 +1,26 @@
 // src/pages/content/client/utils/domUtils.js
-import { reactProps } from '@pages/content/types/index';
+
+/**
+ * @typedef {import('@pages/content/types').ReactProps} ReactProps
+ */
 
 /**
  * Finds the React properties (__reactProps$) associated with a DOM element.
- * @param {Element} dom The DOM element.
- * @returns {Promise<reactProps | undefined>} A promise that resolves with the React props or undefined.
+ * @param {Element} dom The DOM element to find React props for.
+ * @returns {Promise<ReactProps | undefined>} A promise that resolves with the React props or undefined.
  */
 export async function findReactAsync(dom) {
   return new Promise(resolve => {
+    if (!dom || typeof dom !== 'object') {
+      resolve(undefined);
+      return;
+    }
+
     const key = Object.keys(dom).find(key => key.startsWith('__reactProps$'));
     if (key) {
       resolve(dom[key]);
     } else {
-      // Fallback for older React versions or different injection methods
-      const oldKey = Object.keys(dom).find(key => key.startsWith('__reactProps'));
-      if (oldKey) {
-        resolve(dom[oldKey]);
-      } else {
-        resolve(undefined);
-      }
+      resolve(undefined);
     }
   });
 }
@@ -26,32 +28,39 @@ export async function findReactAsync(dom) {
 /**
  * Waits for a DOM element matching the selector to appear.
  * @param {string} selector The CSS selector to wait for.
- * @param {number} [timeout] Optional timeout in milliseconds.
- * @returns {Promise<Element | null>} A promise that resolves with the element or null if timed out or not found.
+ * @param {number} [timeout=30000] The maximum time to wait in milliseconds.
+ * @returns {Promise<Element | null>} A promise that resolves with the element or null if not found.
  */
 export function waitForSelector(selector, timeout = 30000) {
-  return new Promise((resolve) => {
-    let timeoutId = null;
+  return new Promise((resolve, reject) => {
+    // Check if the element already exists
+    const element = document.querySelector(selector);
+    if (element) {
+      resolve(element);
+      return;
+    }
 
-    const checkElement = () => {
+    // Set up a mutation observer to watch for changes to the DOM
+    const observer = new MutationObserver(() => {
       const element = document.querySelector(selector);
       if (element) {
-        if (observer) observer.disconnect();
+        observer.disconnect();
         resolve(element);
       }
-    };
+    });
 
-    const observer = new MutationObserver(checkElement);
+    // Start observing the document with the configured parameters
     observer.observe(document.body, {
       childList: true,
       subtree: true
     });
 
-    checkElement(); // Check immediately in case element is already present
-
-    timeoutId = setTimeout(() => {
-      observer.disconnect();
-      resolve(null);
-    }, timeout);
+    // Set a timeout to stop observing after the specified time
+    if (timeout) {
+      setTimeout(() => {
+        observer.disconnect();
+        resolve(null);
+      }, timeout);
+    }
   });
 }
