@@ -1,100 +1,123 @@
+Extensão Estrutura Base – Projeto ZeroZap
+Extensão para Google Chrome desenvolvida com o objetivo de facilitar o gerenciamento e visualização de conversas do WhatsApp Web, utilizando uma arquitetura moderna e altamente reutilizável.
 
-#  Extensão Estrutura Base – Projeto ZeroZap
+Este projeto também serve como estrutura base para outras extensões, com foco em desempenho, escalabilidade e manutenibilidade.
 
-Extensão para Google Chrome desenvolvida com o objetivo de facilitar o **gerenciamento e visualização de conversas do WhatsApp Web**, usando uma arquitetura moderna e altamente reutilizável.
+📄 Funcionalidades
+🔍 Busca em tempo real de conversas
 
-Este projeto também serve como **estrutura base** para outras extensões, com foco em performance, escalabilidade e manutenibilidade.
+📂 Filtros por status, dados e tipo
 
----
+💾 Armazenamento local persistente com PouchDB
 
-## 📄 Funcionalidades
+🌙 Suporte a tema escuro adaptativo
 
-- 🔍 **Busca em tempo real** de conversas
-- 📂 **Filtros por status, data e tipo**
-- 💾 **Armazenamento local persistente** com PouchDB
-- 🌙 **Suporte a tema escuro adaptativo**
-- 🔄 **Recarregamento e sincronização automática**
-- 📡 **Integração com Socket.io para comunicação em tempo real**
-- ⚛️ **Componentização com React e NextUI**
-- 🧩 **Arquitetura organizada e escalável**
+🔄 Recarregamento e sincronização automática
 
----
+📡 Integração com Socket.io para comunicação em tempo real
 
-## 🛠️ Tecnologias Utilizadas
+⚛️ Componentização com React e NextUI
 
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [NextUI](https://nextui.org/)
-- [PouchDB](https://pouchdb.com/)
-- [Socket.io Client](https://socket.io/)
-- [Moment.js](https://momentjs.com/)
-- [Lucide React](https://lucide.dev/)
-- [ESLint](https://eslint.org/)
+🧩 Arquitetura organizada e escalável
 
----
+🛠️ Tecnologias Utilizadas
+React
 
-## 📦 Instalação
+Vite
 
-> Pré-requisitos: Node.js, npm ou yarn
+Tailwind CSS
 
-1. Clone o repositório:
-```bash
+NextUI
+
+PouchDB
+
+Socket.io Client
+
+Moment.js
+
+Lucide React
+
+ESLint
+
+📦 Instalação
+Pré-requisitos: Node.js, npm ou yarn
+
+Clone o repositório:
+
+bash
+Copiar
+Editar
 git clone https://github.com/seu-usuario/extensao-estrutura-base.git
-```
+Instale as dependências:
 
-2. Instale as dependências:
-```bash
+bash
+Copiar
+Editar
 npm install
 # ou
 yarn
-```
+Rode o projeto em modo desenvolvimento:
 
-3. Rode o projeto em modo desenvolvimento:
-```bash
+bash
+Copiar
+Editar
 npm run dev
-```
+Para gerar o build da extensão:
 
-4. Para gerar o build da extensão:
-```bash
+bash
+Copiar
+Editar
 npm run build
-```
+Vá até chrome://extensions/ no navegador, ative o modo de desenvolvedor e carregue a pasta dist/ como extensão não empacotada.
 
-5. Vá até o `chrome://extensions/` no navegador, ative o modo de desenvolvedor e carregue a pasta `dist/` como extensão não empacotada.
+⚙️ Build e Cache
+Build
+O processo de build utiliza o Vite para empacotar os arquivos da extensão. Certifique-se de que todas as dependências estejam corretamente instaladas e que o ambiente esteja configurado adequadamente antes de gerar o build.
 
----
+Cache
+Para otimizar o desempenho e garantir que os usuários tenham acesso às versões mais recentes da extensão, considere as seguintes práticas de cache:
 
-## 📁 Documentação
+Versão dos Arquivos: Inclua hashes nos nomes dos arquivos estáticos (por exemplo, main.abc123.js) para garantir que o navegador carregue a versão mais recente após atualizações.
 
+Cabeçalhos de Cache: Configure os cabeçalhos HTTP adequados, como Cache-Control: max-age=31536000, immutable, para recursos que não mudam frequentemente. Isso permite que o navegador armazene em cache esses recursos por um longo período, melhorando o desempenho.
+
+Armazenamento Local: Utilize chrome.storage.local para armazenar dados que precisam persistir entre as sessões do usuário. Este armazenamento oferece até 5 MB de espaço por perfil e é adequado para armazenar configurações e dados do usuário.
+
+Evitar Recompilações Desnecessárias: O Chrome agora suporta cache de compilação V8 para extensões, o que significa que scripts grandes não serão recompilados a cada carregamento, melhorando o desempenho.
+
+📁 Documentação
 A documentação técnica completa está disponível em:
 
-📄 https://carmonaventures.notion.site/Documeta-o-Completo-para-Criar-uma-Estrutura-B-sica-de-Extens-o-do-Chrome-com-React-1df15041ac0881088a47e0bde3dd0fe6?pvs=4
+📄 Documentação Completa para Criar uma Estrutura Básica de Extensão do Chrome com React
 
----
-
-## 🤝 Contribuindo
-
+🤝 Contribuindo
 Contribuições são bem-vindas! Para contribuir:
 
-1. Faça um fork deste repositório.
-2. Crie uma branch com sua feature: `git checkout -b minha-feature`
-3. Commit suas mudanças: `git commit -m 'Adiciona nova feature'`
-4. Push para a branch: `git push origin minha-feature`
-5. Abra um Pull Request.
+Faça um fork deste repositório.
 
----
+Crie uma branch com sua feature:
 
-## 📜 Licença
+bash
+Copiar
+Editar
+git checkout -b minha-feature
+Commit suas mudanças:
 
-Este projeto está licenciado sob a **MIT License**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+bash
+Copiar
+Editar
+git commit -m 'Adiciona nova feature'
+Envie para a branch:
 
----
+bash
+Copiar
+Editar
+git push origin minha-feature
+Abra um Pull Request.
 
-## 👨‍💻 Autor
+📜 Licença
+Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-Desenvolvido por [ZeroZap](https://github.com/ZeroZapp)
-```
+👨‍💻 Autor
+Seu Nome
 
----
-
-Você quer que eu gere esse `README.md` como arquivo para download também?
