@@ -93,8 +93,3 @@ Este projeto está licenciado sob a **MIT License**. Veja o arquivo [LICENSE](LI
 ## 👨‍💻 Autor
 
 Desenvolvido por [ZeroZap](https://github.com/ZeroZapp)
-```
-
----
-
-Você quer que eu gere esse `README.md` como arquivo para download também?
